@@ -77,7 +77,7 @@ CREATE TABLE Employees (
     Type VARCHAR(255)
 );
 
-CREATE TABLE Feedback_Report (
+CREATE TABLE Feedback_Reports (
     FeedBackID int,
     EmployeeID int,
     Ratings VARCHAR(255),
