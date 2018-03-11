@@ -1,12 +1,17 @@
-var mysql_data_url = "/get_mysql_data.php"
-var authenticated = false; 
-
-if(!authenticated) {
-  
+var mysql_data_url = "/IT350-database-project/web/get_mysql_data.php"
+var authenticated = false;
+if(getCookie("s3_auth")) {
+  authenticated = true;
 }
 
+
 $(document).ready(function() {
-  $('.ui.menu .item').tab();
+  try {
+    if(!authenticated) {
+      throw true;
+    }
+
+    $('.ui.menu .item').tab();
 
   $.fn.api.settings.api = {
     'get_mysql_data': mysql_data_url + "?action={action}&tableName={tableName}",
@@ -314,6 +319,16 @@ $(document).ready(function() {
       $("#fball_table").html(appendstr);
     }
   })  
+  }
+  catch(notLoggedIn) {
+    var authname = prompt("UserName: ");
+    var authpass = prompt("PassWord: ")
+
+    $.get(mysql_data_url + '?action=admin_auth&username=' + authname + "&password=" + authpass, (res) => {
+      setCookie('s3_auth',res,1);
+      window.reload;
+    })
+  }
 })
 
 
@@ -353,3 +368,26 @@ function getData(parameters) {
       this.addClass('active')
   };
 }(jQuery));
+
+function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+function eraseCookie(name) {   
+  document.cookie = name+'=; Max-Age=-99999999;';  
+}
