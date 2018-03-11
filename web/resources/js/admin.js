@@ -1,4 +1,4 @@
-var mysql_data_url = "/IT350-database-project/web/get_mysql_data.php"
+var mysql_data_url = "/get_mysql_data.php"
 var authenticated = false;
 if(getCookie("s3_auth")) {
   authenticated = true;
