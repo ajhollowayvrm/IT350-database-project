@@ -1,7 +1,9 @@
-var mysql_data_url = "http://localhost:9020/IT350-database-project/web/get_mysql_data.php"
+var mysql_data_url = "/get_mysql_data.php"
 var authenticated = false; 
 
-
+if(!authenticated) {
+  
+}
 
 $(document).ready(function() {
   $('.ui.menu .item').tab();
@@ -68,9 +70,9 @@ $(document).ready(function() {
         <thead>
           <tr>
             <th>EmployeeID</th>
-            <th>Name</th>
+            <th>EmplyName</th>
             <th>Yrs_At_Comp</th>
-            <th>Type</th>
+            <th>EmplyType</th>
           </tr>
         </thead>
         <tbody id="employees_table">
@@ -87,9 +89,9 @@ $(document).ready(function() {
         appendstr = appendstr + `
         <tr>
           <td>` + res[i]['EmployeeID'] + `</td>
-          <td>` + res[i]['Name'] + `</td>
+          <td>` + res[i]['EmplyName'] + `</td>
           <td>` + res[i]['Yrs_At_Comp'] + `</td>
-          <td>` + res[i]['Type'] + `</td>
+          <td>` + res[i]['EmplyType'] + `</td>
         </tr>
         `
       }
@@ -132,9 +134,9 @@ $(document).ready(function() {
         appendstr = appendstr + `
         <tr>
           <td>` + res[i]['EmployeeID'] + `</td>
-          <td>` + res[i]['Name'] + `</td>
+          <td>` + res[i]['EmplName'] + `</td>
           <td>` + res[i]['Yrs_At_Comp'] + `</td>
-          <td>` + res[i]['Type'] + `</td>
+          <td>` + res[i]['EmplType'] + `</td>
         </tr>
         `
       }
@@ -197,7 +199,7 @@ $(document).ready(function() {
     },
     stateContext: ".tab[data-tab='bball']",
     onSuccess: function(res) {
-      var appendstring = `<br><br><table class='ui compact celled table'>
+      var appendstring = `<br><br><div style="overflow-x:scroll;"><table class='ui compact celled table'>
         <thead>
           <tr>
             <th>PlayerID</th>
@@ -221,6 +223,7 @@ $(document).ready(function() {
         <tbody id="bball_table">
         </tbody>
         </table>
+        </div>
         <br>
         <br>
         `
@@ -239,7 +242,7 @@ $(document).ready(function() {
           <td>` + res[i]['Three_PT_Att'] + `</td>
           <td>` + res[i]['Three_PT_Made'] + `</td>
           <td>` + res[i]['Shooting_Perc'] + `</td>
-          <td>` + res[i]['Three_Perd'] + `</td>
+          <td>` + res[i]['Three_Perc'] + `</td>
           <td>` + res[i]['PTS_Scored'] + `</td>
           <td>` + res[i]['Steals'] + `</td>
           <td>` + res[i]['Turnovers'] + `</td>
@@ -344,7 +347,7 @@ function getData(parameters) {
 
 (function($) {
   $.fn.activate = function() {
-      $('nav .item').each(() => {
+      $('nav.menu .item').each(() => {
         this.removeClass('active');
       });
       this.addClass('active')

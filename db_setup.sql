@@ -57,9 +57,9 @@ CREATE TABLE Football_Player(
 
 CREATE TABLE Employees (
     EmployeeID int,
-    Name int,
+    EmplName VARCHAR(255),
     Yrs_At_Comp int,
-    Type VARCHAR(255)
+    EmplType VARCHAR(255)
 );
 
 CREATE TABLE Feedback_Reports (
@@ -114,23 +114,23 @@ INSERT INTO Basketball_Player(PlayerID, Jersey_No, PlayerName, FG_Attp, FG_Made,
 VALUES (5, 13, "Loranger Lewis", 45, 12, 30, 14, 27, 47, 300, 3, 4, 6, 3, 4, 6);
 
 INSERT INTO Football_Player (PlayerID, Jersey_No, PlayerName, Games_Started, Games_Played, Pass_Att, Pass_Comp, Comp_Perc, Pass_TDs, INTs)
-VALUES (1, "Vondrae Cordin", 4, 6, 5, 2, 4, 4, 2, 1);
+VALUES (1, 4, "Vondrae Cordin", 4, 6, 5, 2, 4, 4, 2);
 INSERT INTO Football_Player (PlayerID, Jersey_No, PlayerName, Games_Started, Games_Played, Pass_Att, Pass_Comp, Comp_Perc, Pass_TDs, INTs)
-VALUES (2, "Rich Io", 4, 6, 5, 2, 4, 4, 2, 1);
+VALUES (2, 22, "Rich Io", 4, 6, 5, 2, 4, 4, 2);
 INSERT INTO Football_Player (PlayerID, Jersey_No, PlayerName, Games_Started, Games_Played, Pass_Att, Pass_Comp, Comp_Perc, Pass_TDs, INTs)
-VALUES (3, "Porter Blue", 4, 6, 5, 2, 4, 4, 2, 1);
+VALUES (3, 88, "Porter Blue", 4, 6, 5, 2, 4, 4, 2);
 INSERT INTO Football_Player (PlayerID, Jersey_No, PlayerName, Games_Started, Games_Played, Pass_Att, Pass_Comp, Comp_Perc, Pass_TDs, INTs)
-VALUES (4, "Quan Wright", 4, 6, 5, 2, 4, 4, 2, 1);
+VALUES (4, 45, "Quan Wright", 4, 6, 5, 2, 4, 4, 2);
 INSERT INTO Football_Player (PlayerID, Jersey_No, PlayerName, Games_Started, Games_Played, Pass_Att, Pass_Comp, Comp_Perc, Pass_TDs, INTs)
-VALUES (5, "Neil Harris", 4, 6, 5, 2, 4, 4, 2, 1);
+VALUES (5, 9, "Neil Harris", 4, 6, 5, 2, 4, 4, 2);
 
-INSERT INTO Employees (EmployeeID, Name, Yrs_At_Comp, Type)
+INSERT INTO Employees (EmployeeID, EmplName, Yrs_At_Comp, EmplType)
 VALUES (1, "Spencer Lurio", 3, "Compiler");
-INSERT INTO Employees (EmployeeID, Name, Yrs_At_Comp, Type)
+INSERT INTO Employees (EmployeeID, EmplName, Yrs_At_Comp, EmplType)
 VALUES (2, "Hans Lurio", 3, "Jamitor");
-INSERT INTO Employees (EmployeeID, Name, Yrs_At_Comp, Type)
+INSERT INTO Employees (EmployeeID, EmplName, Yrs_At_Comp, EmplType)
 VALUES (3, "Yuriel Beal", 7, "Compiler");
-INSERT INTO Employees (EmployeeID, Name, Yrs_At_Comp, Type)
+INSERT INTO Employees (EmployeeID, EmplName, Yrs_At_Comp, EmplType)
 VALUES (4, "Richie Mogre", 5, "Sales");
-INSERT INTO Employees (EmployeeID, Name, Yrs_At_Comp, Type)
+INSERT INTO Employees (EmployeeID, EmplName, Yrs_At_Comp, EmplType)
 VALUES (5, "Chelsea Hartmound", 9, "Compiler");
