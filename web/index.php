@@ -18,36 +18,39 @@
     
     <div tile='admin' tileview='yes'>
         <br>
-        <h2 class="ui icon header">
-        <i class="settings icon"></i>
-            <div class="content">
-                Administration
-                <div class="sub header">Database Management</div>
+        <div class='ui one column center aligned grid'>
+            <div class='column'>
+                <h2 class="ui centered icon header" >
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Administration
+                        <div class="sub header">Database Management</div>
+                    </div>
+                </h2>
             </div>
-        </h2>
+        </div>
+
 
         <div class="ui top attached tabular menu">
-            <a class="item" data-tab="users">Users</a>
+            <a class="item" data-tab="customers">Customers</a>
+            <a class="item" data-tab="employees">Employees</a>
             <a class="item" data-tab="feed">Feedback Reports</a>
             <a class="item" data-tab="sheet">S3_Sheets</a>
             <a class="item" data-tab="bball">Basketball</a>
             <a class="item" data-tab="fball">Football</a>
         </div>
 
-        <div class="ui bottom attached tab segment" data-tab="users">
-            First
+        <div class="ui bottom attached tab segment" data-tab="customers">
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="employees">
         </div>
         <div class="ui bottom attached tab segment" data-tab="feed">
-            Second
         </div>
         <div class="ui bottom attached tab segment" data-tab="sheet">
-            Third
         </div>
         <div class="ui bottom attached tab segment" data-tab="bball">
-            Bball
         </div>
         <div class="ui bottom attached tab segment" data-tab="fball">
-            Fball
         </div>
     </div>
 
