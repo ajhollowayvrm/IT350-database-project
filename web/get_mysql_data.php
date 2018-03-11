@@ -12,7 +12,7 @@ switch ($_GET['action']) {
 }
 
 function get_all($tableName) {
-    $con = mysqli_connect('localhost:8889','root','root','admin_db');
+    $con = mysqli_connect('127.0.0.1:3306','root','root','admin_db');
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
@@ -32,7 +32,7 @@ function get_all($tableName) {
 }
 
 function admin_auth($user, $pwd) {   
-    $con = mysqli_connect('localhost:8889','root','root','admin_db');
+    $con = mysqli_connect('127.0.0.1:3306','root','root','admin_db');
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
