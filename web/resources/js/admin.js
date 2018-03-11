@@ -1,15 +1,10 @@
+//var mysql_data_url = "/IT350-database-project/web/get_mysql_data.php"
 var mysql_data_url = "/get_mysql_data.php"
-var authenticated = false;
-if(getCookie("s3_auth")) {
-  authenticated = true;
-}
 
 
 $(document).ready(function() {
-  try {
-    if(!authenticated) {
-      throw true;
-    }
+
+    $('[tileview="no"').hide();
 
     $('.ui.menu .item').tab();
 
@@ -319,26 +314,39 @@ $(document).ready(function() {
       $("#fball_table").html(appendstr);
     }
   })  
-  }
-  catch(notLoggedIn) {
-    var authname = prompt("UserName: ");
-    var authpass = prompt("PassWord: ")
-
-    $.get(mysql_data_url + '?action=admin_auth&username=' + authname + "&password=" + authpass, (res) => {
-      setCookie('s3_auth',res,1);
-      window.reload;
-    })
-  }
 })
 
 
 function move(tileName) {
-  moveToTile(tileName);
-  $(this).activate();
+  if(tileName == "admin") {
+    admin_auth();
+    if(getCookie("s3_auth") && $.getTile('admin').getTileView() == "no") {
+      moveToTile(tileName);
+    }
+  } else {
+    moveToTile(tileName);
+    $(this).activate();
+  }
 }
 
-function getAuth() {
-  getData("action=get_all&tableName=Authentication");
+function admin_auth() {
+
+  if(getCookie("s3_auth")) {
+    moveToTile("admin");
+  } else {
+    var authname = prompt("Username: ");
+    var authpass = prompt("Password: ")
+  
+    $.get(mysql_data_url + '?action=admin_auth&username=' + authname + "&password=" + authpass, (res) => {
+      if(res == true) {
+          setCookie('s3_auth',true,1);
+          moveToTile("admin");
+      } else {
+          alert("Incorrect Admin Credentials.")
+          moveToTile('home');
+      }
+    })
+  }
 }
 
 

@@ -1,18 +1,24 @@
 <?php
 
+
+$addr = "127.0.0.1:3306";
+//$addr = 'localhost:8889';
+
+
 switch ($_GET['action']) {
     case 'get_all':
         get_all($_GET['tableName']);
         break;
     case 'admin_auth':
-        admin_auth(sanitize($_GET['username']), sanitize($_GET['password']));
+        admin_auth($_GET['username'], $_GET['password']);
     default:
         # code...
         break;
 }
 
+
 function get_all($tableName) {
-    $con = mysqli_connect('127.0.0.1:3306','root','root','admin_db');
+    $con = mysqli_connect($addr,'root','root','admin_db');
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
@@ -32,10 +38,13 @@ function get_all($tableName) {
 }
 
 function admin_auth($user, $pwd) {   
-    $con = mysqli_connect('127.0.0.1:3306','root','root','admin_db');
+    $con = mysqli_connect($addr,'root','root','admin_db');
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
+
+    $user = mysqli_real_escape_string($con, $user);
+    $pwd = mysqli_real_escape_string($con, $pwd);
 
     mysqli_select_db($con,'admin_db');
     $sql="SELECT * FROM Authentication";
@@ -53,24 +62,6 @@ function admin_auth($user, $pwd) {
     echo json_encode($authenticated);
 
     mysqli_close($con);
-}
-
-
-function sanitize($data)
-{
-// remove whitespaces (not a must though)
-$data = trim($data); 
-
-// apply stripslashes if magic_quotes_gpc is enabled
-if(get_magic_quotes_gpc()) 
-{
-$data = stripslashes($data); 
-}
-
-// a mySQL connection is required before using this function
-$data = mysql_real_escape_string($data);
-
-return $data;
 }
 
 ?>

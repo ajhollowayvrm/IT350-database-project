@@ -16,7 +16,7 @@
 </nav>
 <body>
     
-    <div tile='admin' tileview='yes'>
+    <div tile='admin' tileview='no'>
         <br>
         <div class='ui one column center aligned grid'>
             <div class='column'>
