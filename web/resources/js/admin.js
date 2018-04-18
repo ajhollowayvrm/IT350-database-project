@@ -498,20 +498,44 @@ function addComment(button) {
 ;}
 
 function getStatuses() {
-  var loading = `
+  var loadingsql = `
   <div class="ui icon message">
-  <i class="notched circle loading icon"></i>
-  <div class="content">
-      <div class="header">
-      Just one second
-      </div>
-      <p>We're fetching that content for you.</p>
-  </div>
-</div> 
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              sudo service mysql status | grep "active (running)"
+              </div>
+              <p>Checking MySQL's status...</p>
+          </div>
+      </div>     
+  `
+  var loadingmongo = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              sudo service mongod status | grep "active (running)"
+              </div>
+              <p>Checking MongoDB's status...</p>
+          </div>
+      </div>     
   `
 
-  $('#mysql').html(loading);
-  $('#mongoDB').html(loading);
+  var loadinges = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              sudo service elasticsearch status | grep "active (running)"
+              </div>
+              <p>Checking ElasticSearch's status...</p>
+          </div>
+      </div>     
+`
+
+  $('#mysql').html(loadingsql);
+  $('#mongoDB').html(loadingmongo);
+  $('#es').html(loadinges);
 
   $.get("http://192.168.50.29:5000/mysql_status", (res) => { 
         if(res == "OK - MySQL is running.") {
