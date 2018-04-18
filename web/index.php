@@ -129,9 +129,9 @@
                     <i class="notched circle loading icon"></i>
                     <div class="content">
                         <div class="header">
-                        Just one second
+                        sudo service mysql status | grep "active (running)"
                         </div>
-                        <p>We're fetching that content for you.</p>
+                        <p>Checking MySQL's status...</p>
                     </div>
                 </div>     
             </div>
@@ -143,9 +143,23 @@
                     <i class="notched circle loading icon"></i>
                     <div class="content">
                         <div class="header">
-                        Just one second
+                        sudo service mongod status | grep "active (running)"
                         </div>
-                        <p>We're fetching that content for you.</p>
+                        <p>Checking MongoDB's status...</p>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <div class='ui raised segment'>
+            <div class='ui huge header'> ElasticSearch Status</div>
+            <div class='ui raised segment' id='es'>
+            <div class="ui icon message">
+                    <i class="notched circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                        sudo service elasticsearch status | grep "active (running)"
+                        </div>
+                        <p>Checking ElasticSearch's status...</p>
                     </div>
                 </div>     
             </div>

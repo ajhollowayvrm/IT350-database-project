@@ -57,5 +57,17 @@ def getMongoDBStatus():
     else:
         return "Not OK - MongoDB is not running."
 
+@app.route('/es_status', methods=['GET'])
+def getESStatus():
+    msqlr = subprocess.Popen("sudo service elasticsearch status".split(), stdout=subprocess.PIPE).stdout
+    grep = subprocess.Popen(["grep", "active (running)"], stdin=msqlr, stdout=subprocess.PIPE).stdout
+    if(grep.read() != ''):
+        if grep.read().find("active (running)"):
+            return "OK - ElasticSearch is running."
+        else:
+            return "Not OK - ElasticSearch is not running."
+    else:
+        return "Not OK - ElasticSearch is not running."
+
 if __name__=='__main__':  
     app.run(host='0.0.0.0', port=5000)

@@ -527,6 +527,13 @@ function getStatuses() {
           $('#mongoDB').html("<div class='ui negative message'>Not OK - MongoDB is not running.</div>")
         }
   })
+  $.get("http://192.168.50.29:5000/es_status", (res) => { 
+    if(res == "OK - ElasticSearch is running.") {
+      $('#es').html("<div class='ui positive message'>OK - ElasticSearch is running.</div>")
+    } else {
+      $('#es').html("<div class='ui negative message'>Not OK - ElasticSearch is not running.</div>")
+    }
+})
 }
 /*---------------------Utilites--------------------*/
 
