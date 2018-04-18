@@ -18,8 +18,7 @@
     <div class="ui five item menu">
         <a class="item active" onclick='move("home")'>Home</a>
         <a class="item" onclick='move("blog")'>Blog</a>
-        <a class="item" onclick='move("feedback")'>FeedBack Reports</a>
-        <a class="item" onclick='move("s3_sheets")'>S3_Sheets</a>
+        <a class="item" onclick='move("statuses")'>Statuses</a>
         <a class="item" onclick='move("admin")'>Administration</a>
     </div>
 </nav>
@@ -118,6 +117,39 @@
         <div id='blogContent'></div>
     </div>
 
+
+    <div tile='statuses' tileview='no'>
+        <br>
+        <div class='ui button' onclick='getStatuses();'>Reload</div>
+        <div class='ui raised segment'>
+            <div class='ui huge header'>MySQL Status</div>
+            <div class='ui raised segment' id='mysql'>
+            <div class="ui icon message">
+                    <i class="notched circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                        Just one second
+                        </div>
+                        <p>We're fetching that content for you.</p>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <div class='ui raised segment'>
+            <div class='ui huge header'> MongoDB Status</div>
+            <div class='ui raised segment' id='mongoDB'>
+            <div class="ui icon message">
+                    <i class="notched circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                        Just one second
+                        </div>
+                        <p>We're fetching that content for you.</p>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
 
 
     <div tile='admin' tileview='no'>

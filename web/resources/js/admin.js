@@ -496,6 +496,37 @@ function addComment(button) {
   $.post("http://192.168.50.29:5000/add_comment", comment_obj, () => { getBlog(); })
 ;}
 
+function getStatuses() {
+  var loading = `
+  <div class="ui icon message">
+  <i class="notched circle loading icon"></i>
+  <div class="content">
+      <div class="header">
+      Just one second
+      </div>
+      <p>We're fetching that content for you.</p>
+  </div>
+</div> 
+  `
+
+  $('#mysql').html(loading);
+  $('#mongoDB').html(loading);
+
+  $.get("http://192.168.50.29:5000/mysql_status", (res) => { 
+        if(res == "OK - MySQL is running.") {
+          $('#mysql').html("<div class='ui positive message'>OK - MySQL is running.</div>")
+        } else {
+          $('#mysql').html("<div class='ui negative message'>Not OK - MySQL is not running.</div>")
+        }
+  })
+  $.get("http://192.168.50.29:5000/mongo_status", (res) => { 
+        if(res == "OK - MongoDB is running.") {
+          $('#mongoDB').html("<div class='ui positive message'>OK - MongoDB is running.</div>")
+        } else {
+          $('#mongoDB').html("<div class='ui negative message'>Not OK - MongoDB is not running.</div>")
+        }
+  })
+}
 /*---------------------Utilites--------------------*/
 
 (function($) {
