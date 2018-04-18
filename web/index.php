@@ -112,7 +112,7 @@
 
 
     <div tile='blog' tileview='no'>
-        <div class='ui huge header'>Blog</div>
+        <div class='ui huge header'>Blog</div><p>Please allow 5-15 seconds for loading.</p>
         <div class='ui divider'></div>
         <div id='blogContent'></div>
     </div>
@@ -120,7 +120,8 @@
 
     <div tile='statuses' tileview='no'>
         <br>
-        <div class='ui button' onclick='getStatuses();'>Reload</div>
+        <div class='ui button' onclick='getStatuses();'>Reload</div><p>Please allow 5-15 seconds for loading.</p>
+        <div class='ui divider'></div>
         <div class='ui raised segment'>
             <div class='ui huge header'>MySQL Status</div>
             <div class='ui raised segment' id='mysql'>

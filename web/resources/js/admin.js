@@ -11,6 +11,7 @@ $(document).ready(function() {
     'get_mysql_data': mysql_data_url + "?action={action}&tableName={tableName}",
   }
   getAdminTables();
+  getStatuses();
 })
 
 function getAdminTables() {
