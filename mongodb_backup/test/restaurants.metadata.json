@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"test.restaurants"},{"v":2,"key":{"address.coord":"2dsphere"},"name":"address.coord_2dsphere","ns":"test.restaurants","2dsphereIndexVersion":3}],"uuid":"c428500a8342462f9030d589e38eef14"}

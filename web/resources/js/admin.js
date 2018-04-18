@@ -559,6 +559,135 @@ function getStatuses() {
     }
 })
 }
+
+function getStats() {
+  var loadingsql = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              SELECT * FROM INFORMATION_SCHEMA.STATISTICS
+              </div>
+              <p>Fetching MySQL's statistics...</p>
+          </div>
+      </div>     
+  `
+  var loadingmongo = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              db.command('serverStatus')['connections']
+              </div>
+              <p>Fetching MongoDB's statistics...</p>
+          </div>
+      </div>     
+  `
+
+  var loadinges = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              192.168.50.29:9200/shakespeare/_stats?pretty=true
+              </div>
+              <p>Fetching ElasticSearch's statistics...</p>
+          </div>
+      </div>     
+`
+
+  $('#mysql_stat').html(loadingsql);
+  $('#mongoDB_stat').html(loadingmongo);
+  $('#es_stat').html(loadinges);
+
+  $.get(mysql_data_url + "?action=stats", (res) => { 
+      if(res) {
+        $('#mysql_stat').html("<div class='ui positive message'>" + res + "</div>")
+      } else {
+        $('#mysql_stat').html("<div class='ui negative message'>Error.</div>")
+      }
+  })
+  $.get("http://192.168.50.29:5000/mongo_stats", (res) => { 
+        if(res) {
+          $('#mongoDB_stat').html("<div class='ui positive message'>" + res + "</div>")
+        }else {
+          $('#mongoDB_stat').html("<div class='ui negative message'>Error.</div>")
+        }
+  })
+  $.get("192.168.50.29:9200/shakespeare/_stats?pretty=true", (res) => { 
+    if(res) {
+      $('#es_stat').html("<div class='ui positive message'>" + res + "</div>")
+    }else {
+      $('#es_stat').html("<div class='ui negative message'>Error.</div>")
+    }
+})
+}
+
+
+function backups() {
+  var loadingsql = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              mysqldump -uroot -proot admin_db > admin_db_backup.sql
+              </div>
+              <p>Performing MySQL backup...</p>
+          </div>
+      </div>     
+  `
+  var loadingmongo = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              mongodump -d test -o ./mongodb_backup
+              </div>
+              <p>Performing MongoDB backup...</p>
+          </div>
+      </div>     
+  `
+
+  var loadinges = `
+  <div class="ui icon message">
+          <i class="notched circle loading icon"></i>
+          <div class="content">
+              <div class="header">
+              GET /_snapshot/backup/snapshot_1?wait_for_completion=true
+              </div>
+              <p>Performing ElasticSearch backup...</p>
+          </div>
+      </div>     
+`
+
+  $('#mysql_back').html(loadingsql);
+  $('#mongoDB_back').html(loadingmongo);
+  $('#es_back').html(loadinges);
+
+  $.get("http://192.168.50.29:3000/mysql_backup", (res) => { 
+        if(res) {
+          $('#mysql_back').html("<div class='ui positive message'>Backup Completed. Check /var/www/html/admin_db_backup.sql</div>")
+        } else {
+          $('#mysql_back').html("<div class='ui negative message'>Error.</div>")
+        }
+  })
+  $.get("http://192.168.50.29:3000/mongo_backup", (res) => { 
+        if(res) {
+          $('#mongoDB_back').html("<div class='ui positive message'>Backup Completed. Check /var/www/html/mongodb_backup</div>");
+        } else {
+          $('#mongoDB_back').html("<div class='ui negative message'>Error.</div>")
+        }
+  })
+  $.get("http://192.168.50.29:3000/es_backup", (res) => { 
+    if(res) {
+      $('#es_back').html("<div class='ui positive message'>Backup Completed. Check 192.168.50.29:9200/_cat/snapshots/backup?v&s=id</div>")
+    } else {
+      $('#es_back').html("<div class='ui negative message'>Error.</div>")
+    }
+})
+}
+
+
 /*---------------------Utilites--------------------*/
 
 (function($) {

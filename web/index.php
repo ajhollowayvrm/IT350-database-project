@@ -18,7 +18,7 @@
     <div class="ui five item menu">
         <a class="item active" onclick='move("home")'>Home</a>
         <a class="item" onclick='move("blog")'>Blog</a>
-        <a class="item" onclick='move("statuses")'>Statuses</a>
+        <a class="item" onclick='move("dba")'>DBA</a>
         <a class="item" onclick='move("admin")'>Administration</a>
     </div>
 </nav>
@@ -118,11 +118,12 @@
     </div>
 
 
-    <div tile='statuses' tileview='no'>
+    <div tile='dba' tileview='no'>
         <br>
-        <div class='ui button' onclick='getStatuses();'>Reload</div><p>Please allow 5-15 seconds for loading.</p>
-        <div class='ui divider'></div>
         <div class='ui raised segment'>
+        <div class='ui huge header'>Statuses</div>
+        <div class='ui button' onclick='getStatuses();'>Reload Statuses</div><p>Please allow 5-15 seconds for loading.</p>
+        <div class='ui divider'></div>
             <div class='ui huge header'>MySQL Status</div>
             <div class='ui raised segment' id='mysql'>
             <div class="ui icon message">
@@ -135,8 +136,6 @@
                     </div>
                 </div>     
             </div>
-        </div>
-        <div class='ui raised segment'>
             <div class='ui huge header'> MongoDB Status</div>
             <div class='ui raised segment' id='mongoDB'>
             <div class="ui icon message">
@@ -149,8 +148,6 @@
                     </div>
                 </div>     
             </div>
-        </div>
-        <div class='ui raised segment'>
             <div class='ui huge header'> ElasticSearch Status</div>
             <div class='ui raised segment' id='es'>
             <div class="ui icon message">
@@ -160,6 +157,78 @@
                         sudo service elasticsearch status | grep "active (running)"
                         </div>
                         <p>Checking ElasticSearch's status...</p>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <br>
+        <div class='ui raised segment'>
+            <div class='ui huge header'>Statistics</div>
+            <div class='ui button' onclick='getStats();'>Reload Statistics</div><p>Please allow 5-15 seconds for loading.</p>
+        <div class='ui divider'></div>
+            <div class='ui huge header'>MySQL Stats</div>
+            <div class='ui raised segment' id='mysql_stat'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to fetch MySQL statistics.
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class='ui huge header'>MongoDB Backup</div>
+            <div class='ui raised segment' id='mongoDB_stat'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to fetch MongoDB statistics.
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class='ui huge header'>ElasticSearch Backup</div>
+            <div class='ui raised segment' id='es_stat'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to fetch ElasticSearch statistics.
+                        </div>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <br>
+        <div class='ui raised segment'>
+            <div class='ui huge header'>Back Ups</div>
+            <div class='ui button' onclick='backups();'>Backup</div><p>Please allow 5-15 seconds for loading.</p>
+        <div class='ui divider'></div>
+            <div class='ui huge header'>MySQL Backup</div>
+            <div class='ui raised segment' id='mysql_back'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to perform MySQL backup.
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class='ui huge header'>MongoDB Backup</div>
+            <div class='ui raised segment' id='mongoDB_back'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to perform MongoDB backup.
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class='ui huge header'>ElasticSearch Backup</div>
+            <div class='ui raised segment' id='es_back'>
+            <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                        Ready to perform ElasticSearch backup.
+                        </div>
                     </div>
                 </div>     
             </div>

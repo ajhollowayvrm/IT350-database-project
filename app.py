@@ -69,5 +69,10 @@ def getESStatus():
     else:
         return "Not OK - ElasticSearch is not running."
 
+@app.route('/mongo_stats', methods=['GET'])
+def mongoStats():
+    result = db.command('serverStatus')['connections']
+    return json.dumps(result)
+
 if __name__=='__main__':  
     app.run(host='0.0.0.0', port=5000)

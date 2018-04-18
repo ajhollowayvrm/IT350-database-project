@@ -1,8 +1,8 @@
 <?php
 
 
-//$addr = "127.0.0.1:3306";
-$addr = 'localhost:8889';
+$addr = "127.0.0.1:3306";
+//$addr = 'localhost:8889';
 
 
 switch ($_GET['action']) {
@@ -17,6 +17,9 @@ switch ($_GET['action']) {
         break;
     case 'delete':
         del($_GET['tableName'], $_GET['id']);
+        break;
+    case 'stats':
+        getStats();
         break;
     default:
         # code...
@@ -185,6 +188,30 @@ function del($tableName, $id){
     $result = mysqli_query($con,$sql);
     mysqli_close($con);
 };
+
+function getStats() {
+
+    $con = mysqli_connect($addr,'root','root','admin_db');
+    if (!$con) {
+        die('Could not connect: ' . mysqli_error($con));
+    }
+
+    //$tableName = mysqli_real_escape_string($con, $tableName);
+    mysqli_select_db($con,'admin_db');
+
+    $sql="SELECT * FROM INFORMATION_SCHEMA.STATISTICS";
+
+    $result = mysqli_query($con,$sql);
+    $array = [];
+
+    while($row = $result->fetch_assoc()) {
+        array_push($array, $row);
+    }
+
+    echo json_encode($array);
+    mysqli_close($con);
+
+}
 
 
 function add_quotes($str) {
