@@ -16,9 +16,10 @@
     </style>
 <nav>
     <div class="ui five item menu">
-        <a class="item active" onclick='move("home")'>Home</a>
+        <a class="item" onclick='move("home")'>Home</a>
         <a class="item" onclick='move("blog")'>Blog</a>
         <a class="item" onclick='move("dba")'>DBA</a>
+        <a class="item" onclick='move("es")'>ElasticSearch</a>
         <a class="item" onclick='move("admin")'>Administration</a>
     </div>
 </nav>
@@ -124,7 +125,7 @@
         <div class='ui huge header'>Statuses</div>
         <div class='ui button' onclick='getStatuses();'>Reload Statuses</div><p>Please allow 5-15 seconds for loading.</p>
         <div class='ui divider'></div>
-            <div class='ui huge header'>MySQL Status</div>
+            <div class='ui big header'>MySQL Status</div>
             <div class='ui raised segment' id='mysql'>
             <div class="ui icon message">
                     <i class="notched circle loading icon"></i>
@@ -136,7 +137,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'> MongoDB Status</div>
+            <div class='ui big header'> MongoDB Status</div>
             <div class='ui raised segment' id='mongoDB'>
             <div class="ui icon message">
                     <i class="notched circle loading icon"></i>
@@ -148,7 +149,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'> ElasticSearch Status</div>
+            <div class='ui big header'> ElasticSearch Status</div>
             <div class='ui raised segment' id='es'>
             <div class="ui icon message">
                     <i class="notched circle loading icon"></i>
@@ -166,7 +167,7 @@
             <div class='ui huge header'>Statistics</div>
             <div class='ui button' onclick='getStats();'>Reload Statistics</div><p>Please allow 5-15 seconds for loading.</p>
         <div class='ui divider'></div>
-            <div class='ui huge header'>MySQL Stats</div>
+            <div class='ui big header'>MySQL Stats</div>
             <div class='ui raised segment' id='mysql_stat'>
             <div class="ui message">
                     <div class="content">
@@ -176,7 +177,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'>MongoDB Backup</div>
+            <div class='ui big header'>MongoDB Stats</div>
             <div class='ui raised segment' id='mongoDB_stat'>
             <div class="ui message">
                     <div class="content">
@@ -186,7 +187,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'>ElasticSearch Backup</div>
+            <div class='ui big header'>ElasticSearch Stats</div>
             <div class='ui raised segment' id='es_stat'>
             <div class="ui message">
                     <div class="content">
@@ -202,7 +203,7 @@
             <div class='ui huge header'>Back Ups</div>
             <div class='ui button' onclick='backups();'>Backup</div><p>Please allow 5-15 seconds for loading.</p>
         <div class='ui divider'></div>
-            <div class='ui huge header'>MySQL Backup</div>
+            <div class='ui big header'>MySQL Backup</div>
             <div class='ui raised segment' id='mysql_back'>
             <div class="ui message">
                     <div class="content">
@@ -212,7 +213,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'>MongoDB Backup</div>
+            <div class='ui big header'>MongoDB Backup</div>
             <div class='ui raised segment' id='mongoDB_back'>
             <div class="ui message">
                     <div class="content">
@@ -222,7 +223,7 @@
                     </div>
                 </div>     
             </div>
-            <div class='ui huge header'>ElasticSearch Backup</div>
+            <div class='ui big header'>ElasticSearch Backup</div>
             <div class='ui raised segment' id='es_back'>
             <div class="ui message">
                     <div class="content">
@@ -232,6 +233,13 @@
                     </div>
                 </div>     
             </div>
+        </div>
+    </div>
+
+    <div tile='es' tileview='no'>
+        <div class='ui huge header'>Shakespeare</div>
+        <div class='ui raised segment' id='shake'>
+
         </div>
     </div>
 

@@ -199,7 +199,7 @@ function getStats() {
     //$tableName = mysqli_real_escape_string($con, $tableName);
     mysqli_select_db($con,'admin_db');
 
-    $sql="SELECT * FROM INFORMATION_SCHEMA.STATISTICS";
+    $sql="SHOW STATUS";
 
     $result = mysqli_query($con,$sql);
     $array = [];

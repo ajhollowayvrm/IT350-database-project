@@ -12,6 +12,7 @@ $(document).ready(function() {
   }
   getAdminTables();
   getStatuses();
+  getShake();
 })
 
 function getAdminTables() {
@@ -589,7 +590,7 @@ function getStats() {
           <i class="notched circle loading icon"></i>
           <div class="content">
               <div class="header">
-              192.168.50.29:9200/shakespeare/_stats?pretty=true
+              GET /shakespeare/_stats?pretty=true
               </div>
               <p>Fetching ElasticSearch's statistics...</p>
           </div>
@@ -602,21 +603,21 @@ function getStats() {
 
   $.get(mysql_data_url + "?action=stats", (res) => { 
       if(res) {
-        $('#mysql_stat').html("<div class='ui positive message'>" + res + "</div>")
+        $('#mysql_stat').html("<div class='ui positive message' style='overflow:scroll; max-height: 200px;'>" + res + "</div>")
       } else {
         $('#mysql_stat').html("<div class='ui negative message'>Error.</div>")
       }
   })
   $.get("http://192.168.50.29:5000/mongo_stats", (res) => { 
         if(res) {
-          $('#mongoDB_stat').html("<div class='ui positive message'>" + res + "</div>")
+          $('#mongoDB_stat').html("<div class='ui positive message' style='overflow:scroll;'>" + res + "</div>")
         }else {
           $('#mongoDB_stat').html("<div class='ui negative message'>Error.</div>")
         }
   })
-  $.get("192.168.50.29:9200/shakespeare/_stats?pretty=true", (res) => { 
+  $.get("http://192.168.50.29:9200/shakespeare/_stats?pretty=true", (res) => { 
     if(res) {
-      $('#es_stat').html("<div class='ui positive message'>" + res + "</div>")
+      $('#es_stat').html("<div class='ui positive message' style='overflow:scroll;max-height: 200px;'>" + JSON.stringify(res,null,2) + "</div>")
     }else {
       $('#es_stat').html("<div class='ui negative message'>Error.</div>")
     }
@@ -687,6 +688,15 @@ function backups() {
 })
 }
 
+
+function getShake() {
+  $.get("http://192.168.50.29:9200/_search?size=1000", (res) => {
+    for (let i = 0; i < (res['hits']['hits']).length; i++) {
+      $('#shake').append(res['hits']['hits'][i]['_source']['play_name'] + " " + res['hits']['hits'][i]['_source']['text_entry'] + "<br>")
+    }
+  })
+  
+}
 
 /*---------------------Utilites--------------------*/
 
